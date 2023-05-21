@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
 
   namespace :public do
-    get 'users/show'
-    get 'users/edit'
-    get 'users/update'
+
   end
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -14,6 +12,8 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
 }
 
+
+##ユーザ
 scope module: :public do
 #homes
   root to: "homes#top"
@@ -21,7 +21,11 @@ scope module: :public do
 
 #users
   get "users/my_page" => "users#show"
+  get "users/my_page/edit" => "users#edit"
+  patch "users/my_page" => "users#update"
 
+#items
+  resources :items, only:[:index, :new, :create, :show,:destory, ]
 
 end
 

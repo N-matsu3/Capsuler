@@ -1,22 +1,36 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <h4>マイページ</h4>
-        <table class="table table-borderless">
-          <tr>
-            <th>ユーザネーム</th>
-            <td><%= @user.user_name %></td>
-          </tr>
-          <tr>
-            <th>メールアドレス</th>
-            <td><%= @user.email %></td>
-          </tr>
-          <tr>
-            <th>プロフィール</th>
-            <td><%= @user.introduction %></td>
-          </tr>
-        </table>
+  <div class="row mt-5">
+    <h4 class="col-md-12">マイページ</h4>
+    <div class="col-md-3">
 
+      <%= flash[:notice] %>
+
+
+
+          <% if @user.image.attached? %>
+            <%=image_tag user.image, size: "200x200" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "200x200" %>
+          <% end %>
     </div>
+
+    <div class="col-md-8 offset-md-1">
+          <table class="table border">
+            <tr>
+              <th>ユーザネーム</th>
+              <td><%= @user.user_name %></td>
+            </tr>
+            <tr>
+              <th>メールアドレス</th>
+              <td><%= @user.email %></td>
+            </tr>
+            <tr>
+              <th>プロフィール</th>
+              <td><%= @user.introduction %></td>
+            </tr>
+          </table>
+         <%= link_to 'プロフィール編集',  users_my_page_edit_path, class: 'btn btn-success w-50' %>
+    </div>
+
   </div>
 </div>
