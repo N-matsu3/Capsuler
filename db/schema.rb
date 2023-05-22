@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2023_05_21_091222) do
   end
 
   create_table "items", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "tag_id"
     t.integer "favorite_id"
     t.integer "comment_id"

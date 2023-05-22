@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-12 mt-5">
+
+     <!--投稿者のプロフ画像とユーザ名-->
+
+      <% if @item.user.profile_image.attached? %>
+        <%=image_tag @item.user.profile_image, size: "70x70" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "70x70" %>
+      <% end %>
+     <%= @item.user.user_name%>
+
+    </div>
+
+
+    <div class="col-md-5">
+
+      <!--ガチャのイメージと説明文-->
+
+     <% if @item.image.attached? %>
+            <%=image_tag @item.image, size: "300x300" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "300x300" %>
+          <% end %>
+
+    </div>
+
+    <div class="col-md-6 offset-1">
+      <h3 class="p-2 mb-2 bg-info text-white"><%= @item.title %></h3>
+        <div class="col-md-6 mt-3">
+           <%= @item.created_at.strftime('%Y/%m/%d/%T') %>
+        </div>
+        <div class="col-md-6 mt-5">
+          <%= @item.detail %>
+        </div>
+
+
+
+    </div>
+
+
+  </div>
+</div>

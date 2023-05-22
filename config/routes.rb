@@ -25,7 +25,8 @@ scope module: :public do
   patch "users/my_page" => "users#update"
 
 #items
-  resources :items, only:[:index, :new, :create, :show,:destory, ]
+  resources :items, only:[:index, :new, :create, :show,:destory, :myindex]
+  get "my_items" => "items#myindex"
 
 end
 
