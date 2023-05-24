@@ -1,10 +1,8 @@
 <div class="container">
   <div class="row">
-
+    <%= flash[:notice] %>
     <div class="col-md-12 mt-5">
-
      <!--投稿者のプロフ画像とユーザ名-->
-
       <% if @item.user.profile_image.attached? %>
         <%=image_tag @item.user.profile_image, size: "70x70" %>
       <% else %>
@@ -32,10 +30,13 @@
         <div class="col-md-6 mt-3">
            <%= @item.created_at.strftime('%Y/%m/%d/%T') %>
         </div>
-        <div class="col-md-6 mt-5">
-          <%= @item.detail %>
+        <div class="col-md-12 mt-5">
+          <%= safe_join(@item.detail.split("\n"),tag(:br)) %>
         </div>
+        <div class="pr-0">
+         <%= link_to '投稿内容編集', edit_item_path(@item), class: 'btn btn-success btn-small' %>
 
+        </div>
 
 
     </div>

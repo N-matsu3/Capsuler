@@ -26,7 +26,7 @@
             </tr>
             <tr>
               <th>プロフィール</th>
-              <td><%= @user.introduction %></td>
+              <td><%= safe_join(@user.introduction.split("\n"),tag(:br)) %></td>
             </tr>
           </table>
          <%= link_to 'プロフィール編集',  users_my_page_edit_path, class: 'btn btn-success w-50' %>
