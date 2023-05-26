@@ -15,12 +15,25 @@
           </tr>
           </tr>
            <tr>
-            <th>タグ</th><td></td>
+            <th>タグ</th>
+            <!--タグ表示する記述-->
+              <td><div class='form-group'>
+                    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+                        <div class='form-check'>
+                          <%= tag.label class: 'form-check-label' do %>
+                              <%= tag.check_box class: 'form-check-input' %>
+                              <%= tag.text %>
+                          <% end %>
+                        </div>
+                      <% end %>
+                  </div>
+              </td>
           </tr>
           </tr>
            <tr>
             <th>位置情報</th><td></td>
           </tr>
+
           <tr>
             <th></th><td><%= f.submit '投稿',class:'btn btn-success w-50' %></td>
           </tr>

@@ -15,7 +15,7 @@
 
     <div class="col-md-5">
 
-      <!--ガチャのイメージと説明文-->
+      <!--ガチャのイメージ-->
 
      <% if @item.image.attached? %>
             <%=image_tag @item.image, size: "300x300" %>
@@ -25,16 +25,27 @@
 
     </div>
 
+      <!--ガチャの説明文-->
+
     <div class="col-md-6 offset-1">
       <h3 class="p-2 mb-2 bg-info text-white"><%= @item.title %></h3>
-        <div class="col-md-6 mt-3">
-           <%= @item.created_at.strftime('%Y/%m/%d/%T') %>
+
+        <div class="col-md-12 mt-3 text-right">
+           <small>投稿日時</small>　<%= @item.created_at.strftime('%Y/%m/%d/%T') %>
         </div>
-        <div class="col-md-12 mt-5">
+
+        <div class="col-md-12 my-3">
+          <!--複数あるタグをeach文を使って一つ一つ呼び出す記述-->
+          <% @item.tags.each do |tag| %>
+            <div class="btn btn-primary btn-small px-1 py-1"><%= tag.name %></div>
+          <% end %>
+         </div>
+
+        <div class="col-md-12 my-5">
           <%= safe_join(@item.detail.split("\n"),tag(:br)) %>
         </div>
-        <div class="pr-0">
-         <%= link_to '投稿内容編集', edit_item_path(@item), class: 'btn btn-success btn-small' %>
+        <div class="col-md-12 text-right">
+         <%= link_to '投稿内容編集', edit_item_path(@item), class: 'btn btn-success btn-small ' %>
 
         </div>
 

@@ -8,6 +8,25 @@ class Public::ItemsController < ApplicationController
     #current_userが作ったitemのみ表示。.orderあとは作成日時順で並び替えのための記述
     @items = @user.items.order(created_at: :desc)
 
+    #OR検索の記述
+    if params[:tag_ids]
+      @items = []
+      params[:tag_ids].each do |key, value|
+        @items += Tag.find_by(name: key).items if value == "1"
+      end
+      @items.uniq!
+    end
+
+    # AND検索の記述
+    if params[:tag_ids]
+      @tweets = []
+      params[:tag_ids].each do |key, value|
+        if value == "1"
+          tag_tweets = Tag.find_by(name: key).tweets
+          @tweets = @tweets.empty? ? tag_tweets : @tweets & tag_tweets
+        end
+      end
+    end
 
   end
 
@@ -48,7 +67,8 @@ class Public::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:image, :title, :detail)
+    params.require(:item).permit(:image, :title, :detail, tag_ids: [])
+    # 複数のtag_idsが渡ってくるので「配列[]」の形式での記述
   end
 
 end

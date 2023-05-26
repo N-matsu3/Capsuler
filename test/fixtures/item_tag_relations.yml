@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Item: one
+  tag: one
+
+two:
+  Item: two
+  tag: two
