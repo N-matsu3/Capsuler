@@ -1,0 +1,27 @@
+<!--starについての記述-->
+              <% if item.id.nil? %>
+                <div class="form-group" id="star">
+                  <%= f.label :star %>
+                  <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
+                  <div id="post_raty"></div>
+                </div>
+                <script>
+                  $(document).on('turbolinks:load', function() {
+                    let elem = document.querySelector('#post_raty');
+                    if (elem == null) return;
+              
+                    elem.innerHTML = ""
+                    let opt = {  
+                      starOn: "<%= asset_path('g.star.png') %>",
+                      starOff: "<%= asset_path('g.star.off.png') %>",
+                      starHalf: "<%= asset_path('g.star.half.png') %>",
+                      scoreName: 'book[star]',
+                    };
+                    raty(elem, opt);
+                  });
+                </script>
+              <% else %>
+                <div class="form-group">
+                  <%= render "static_rate", : book %>
+                </div>
+              <% end %>

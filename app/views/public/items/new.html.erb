@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
       <h3>アイテム投稿</h3>
       <%= form_with model: @item do |f| %>
         <table class="table border-borderless">
@@ -30,7 +30,45 @@
               </td>
           </tr>
           </tr>
-           <tr>
+          <tr>
+            <th>評価</th>
+            <td>
+
+
+              <!--starについての記述-->
+              <% if @item.id.nil? %>
+                <div class="form-group row" id="star">
+                  <%= f.label :star  ,class:'col-md-3 col-form-label'%>
+                  <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
+                  <div id="post_raty"></div>
+                </div>
+                <script>
+
+                  $(document).on('turbolinks:load', function() {
+                    let elem = document.querySelector('#post_raty');
+                    if (elem == null) return;
+
+                    elem.innerHTML = ""
+                    let opt = {
+
+                      size: 5,
+                      starOn: "<%= asset_path('g.star.png') %>",
+                      starOff: "<%= asset_path('g.star.off.png') %>",
+                      starHalf: "<%= asset_path('g.star.half.png') %>",
+                      scoreName: 'item[star]',
+                      half:true,
+                    };
+                    raty(elem, opt);
+                  });
+
+                </script>
+              <% else %>
+                <div class="form-group">
+                  <%#= render "static_rate", item: item %>
+                </div>
+              <% end %></td>
+          </tr>
+          <tr>
             <th>位置情報</th><td></td>
           </tr>
 

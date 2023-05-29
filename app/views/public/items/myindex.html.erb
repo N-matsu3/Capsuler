@@ -26,7 +26,7 @@
       </div>
 
       <div class="col-md-3 offset-md-1">
-        <%= form_tag({controller:"items",action:"index"}, method: :get) do %>
+        <%= form_tag({controller:"items",action:"myindex"}, method: :get) do %>
           <% Tag.all.each do |t| %>
             <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
           <% end %>

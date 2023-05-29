@@ -44,11 +44,48 @@
         <div class="col-md-12 my-5">
           <%= safe_join(@item.detail.split("\n"),tag(:br)) %>
         </div>
+
+
+        <div class="row">
+        <div id="star_<%= @item.id %>"></div>
+          <script>
+          $(document).on('turbolinks:load', function() {
+            let elem = document.querySelector('#star_<%= @item.id %>');
+            if (elem == null) return;
+
+            elem.innerHTML = "";
+            let opt = {
+                       starOn: "<%= asset_path('g.star.png') %>",
+                      starOff: "<%= asset_path('g.star.off.png') %>",
+                      starHalf: "<%= asset_path('g.star.half.png') %>",
+              score: "<%= @item.star %>",
+              readOnly: true,
+            };
+            raty(elem, opt);
+          });
+          </script>
+        </div>
+
         <div class="col-md-12 text-right">
          <%= link_to '投稿内容編集', edit_item_path(@item), class: 'btn btn-success btn-small ' %>
 
         </div>
 
+      <h4>コメントする</h4>
+      <div>
+
+      <%= form_with(model:[@item, @comment], method: :item) do |f| %>
+        <%= f.text_area :comment_content %>
+        <%= f.hidden_field :item_id, value: @item.id %>
+        <%= f.submit 'コメントする' %>
+
+      </div>
+
+      <h4>コメント一覧</h4>
+      <div>
+        <%= @comments.each do |comment| %>
+        <%= comment.comment_content %>
+      </div>
 
     </div>
 
