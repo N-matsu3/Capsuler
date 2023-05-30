@@ -26,7 +26,11 @@
             </tr>
             <tr>
               <th>プロフィール</th>
-              <td><%= safe_join(@user.introduction.split("\n"),tag(:br)) %></td>
+                  <!--プロフィールがない場合、エラーが起こるのでif文を使って回避-->
+              <td><% if @user.introduction? %>
+                  <%= safe_join(@user.introduction.split("\n"),tag(:br)) %></td>
+                  <% else %>
+                  <% end %>
             </tr>
           </table>
          <%= link_to 'プロフィール編集',  users_my_page_edit_path, class: 'btn btn-success w-50' %>

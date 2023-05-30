@@ -25,11 +25,17 @@ scope module: :public do
   patch "users/my_page" => "users#update"
 
 #items
-  resources :items, only:[:index, :new, :create, :show, :edit, :update, :destory, :myindex]
+  resources :items, only:[:index, :new, :create, :show, :edit, :update, :destory, :myindex, :delete]
   get "my_items" => "items#myindex"
 
-end
 
+
+#comment
+  resources :items do
+    resources :comments, only: [:create]
+    # commentsリソースをpostsリソース内にネストすることで、post_comments_pathなどのようにパスを指定できる！
+  end
+end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

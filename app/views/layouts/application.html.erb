@@ -18,6 +18,14 @@
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           <a class="navbar-brand p-3" href="/">Capsuler</a>
+          <div>
+            <% if current_user.profile_image.attached? %>
+              <%=image_tag current_user.profile_image, size: "50x50" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "50x50" %>
+            <% end %>
+           <%= current_user.user_name%>
+          </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -27,47 +35,60 @@
 
             <% if user_signed_in? %>
 
-            <li class="nav-item">
-              <%= link_to 'マイページ',  users_my_page_path, class: 'nav-link text-dark' %>
-            </li>
+              <li class="nav-item">
+                <%= link_to 'マイページ',  users_my_page_path, class: 'nav-link text-dark' %>
+              </li>
 
-            <li class="nav-item">
-              <%= link_to 'マイ投稿一覧', my_items_path, class: 'nav-link text-dark' %>
-            </li>
+              <li class="nav-item">
+                <%= link_to 'マイ投稿一覧', my_items_path, class: 'nav-link text-dark' %>
+              </li>
 
-            <li class="nav-item">
-              <%= link_to 'アイテム投稿', new_item_path, class: 'nav-link text-dark' %>
-            </li>
+              <li class="nav-item">
+                <%= link_to 'アイテム投稿', new_item_path, class: 'nav-link text-dark' %>
+              </li>
 
-            <li class="nav-item">
-              <%= link_to "アイテム一覧", root_path, method: :delete, class: 'nav-link text-dark' %>
-            </li>
+              <li class="nav-item">
+                <%= link_to "アイテム一覧", items_path, class: 'nav-link text-dark' %>
+              </li>
 
-            <li class="nav-item">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
-            </li>
+              <li class="nav-item">
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+              </li>
 
-            <%# elsif admin_signed_in? %>
+            <% elsif admin_signed_in? %>
+
+              <li class="nav-item">
+                <%= link_to "ユーザ一覧", items_path, class: 'nav-link text-dark' %>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to "アイテム一覧", items_path, class: 'nav-link text-dark' %>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+              </li>
+
 
 
             <% else %>
 
 
-            <li class="nav-item">
-              <%= link_to '新規登録', new_user_registration_path, class: 'nav-link text-dark' %>
-            </li>
+              <li class="nav-item">
+                <%= link_to '新規登録', new_user_registration_path, class: 'nav-link text-dark' %>
+              </li>
 
-            <li class="nav-item">
-              <%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-dark' %>
-            </li>
+              <li class="nav-item">
+                <%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-dark' %>
+              </li>
 
-            <li class="nav-item">
-              <%= link_to 'about', about_path, class: 'nav-link text-dark' %>
-            </li>
+              <li class="nav-item">
+                <%= link_to 'about', about_path, class: 'nav-link text-dark' %>
+              </li>
 
-            <li class="nav-item">
-              <%= link_to "アイテム一覧", root_path, method: :delete, class: 'nav-link text-dark' %>
-            </li>
+              <li class="nav-item">
+                <%= link_to "アイテム一覧", items_path, class: 'nav-link text-dark' %>
+              </li>
 
             <% end %>
 

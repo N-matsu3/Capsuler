@@ -37,7 +37,7 @@
         <div class="col-md-12 my-3">
           <!--複数あるタグをeach文を使って一つ一つ呼び出す記述-->
           <% @item.tags.each do |tag| %>
-            <div class="btn btn-primary btn-small px-1 py-1"><%= tag.name %></div>
+            <div>＃<%= tag.name %></div>
           <% end %>
          </div>
 
@@ -74,17 +74,19 @@
       <h4>コメントする</h4>
       <div>
 
-      <%= form_with(model:[@item, @comment], method: :item) do |f| %>
+      <%= form_with(model:[@item, @comment], method: :post )do |f| %>
         <%= f.text_area :comment_content %>
         <%= f.hidden_field :item_id, value: @item.id %>
         <%= f.submit 'コメントする' %>
+      <% end %>
 
       </div>
 
       <h4>コメント一覧</h4>
       <div>
-        <%= @comments.each do |comment| %>
-        <%= comment.comment_content %>
+        <% @comments.each do |comment| %>
+          <div><%= comment.comment_content %>  by.<%= comment.user.user_name %>  (<%= comment.created_at.strftime('%Y/%m/%d/%T') %>)</div>
+        <% end %>
       </div>
 
     </div>

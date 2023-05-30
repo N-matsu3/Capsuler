@@ -5,30 +5,31 @@
 
 
       <h2 class="col ml-5 pb-3 bg-secondary-subtle">新規ユーザ登録</h2>
-        <table class="table table-borderless">
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <%= render "public/shared/error_messages", resource: resource %>
 
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "public/shared/error_messages", resource: resource %>
+
+        <table class="table table-borderless">
             <tr>
               <th><%= f.label :ユーザー名 %></th>
               <td><%= f.text_field :user_name, autofocus: true, autocomplete: "user_name" %></td>
             </tr>
 
             <tr>
-              <th><%= f.label :email %></th>
+              <th><%= f.label :メールアドレス %></th>
               <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
             </tr>
 
             <tr>
-              <th><%= f.label :password %></th>
+              <th><%= f.label :パスワード %></th>
               <td><% if @minimum_password_length %>
-              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <em>(<%= @minimum_password_length %> 文字以上)</em>
               <% end %></br>
               <%= f.password_field :password, autocomplete: "new-password" %></td>
             </tr>
 
             <tr>
-              <th><%= f.label :password_confirmation %></th>
+              <th><%= f.label :パスワード（確認用） %></th>
               <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
             </tr>
 
@@ -36,9 +37,10 @@
               <th></th>
               <td><%= f.submit "新規登録" ,class: "btn btn-success w-50"%></td>
             </tr>
-          <% end %>
+         
         </table>
-
+        <% end %>
+        
       <div class="p-3 mb-2 bg-secondary-subtle text-dark">既に登録済みの方</div>
          <%= link_to 'こちら', new_user_session_path %>からログインしてください。
 
