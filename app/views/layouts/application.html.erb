@@ -19,12 +19,16 @@
         <div class="container">
           <a class="navbar-brand p-3" href="/">Capsuler</a>
           <div>
-            <% if current_user.profile_image.attached? %>
-              <%=image_tag current_user.profile_image, size: "50x50" %>
-            <% else %>
-              <%= image_tag 'no_image', size: "50x50" %>
+            <% if user_signed_in? %>
+              <% if current_user.profile_image.attached? %>
+                <%=image_tag current_user.profile_image, size: "50x50" %>
+              <% else %>
+                <%= image_tag 'no_image', size: "50x50" %>
+              <% end %>
+              <%= current_user.user_name%>
+            <% elsif admin_signed_in? %>
+              管理者としてログイン中
             <% end %>
-           <%= current_user.user_name%>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,7 +66,7 @@
               </li>
 
               <li class="nav-item">
-                <%= link_to "アイテム一覧", items_path, class: 'nav-link text-dark' %>
+                <%= link_to "アイテム一覧",  admin_items_path, class: 'nav-link text-dark' %>
               </li>
 
               <li class="nav-item">
