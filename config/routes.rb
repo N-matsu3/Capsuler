@@ -54,7 +54,9 @@ scope module:
     get "sign_up" => "registrations#new"
 
   #items
-    resources :items,only:[:index, :show, :destroy]
+    resources :items,only:[:index, :show, :destroy, :delete, :edit, :update]
+  # users
+    resources :users,only:[:index, :show, :edit, :update]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

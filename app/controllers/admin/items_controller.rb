@@ -25,5 +25,34 @@ class Admin::ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
+
+     #コメント
+    @comments = @item.comments
+
   end
+  
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+      if @item.update(item_params)
+            flash[:notice] = "更新しました！"
+          redirect_to item_path(@item)
+      else
+        render :edit
+      end
+  end
+
+
+  private
+
+  def item_params
+    params.require(:item).permit(:image, :title, :detail, :star, tag_ids: [])
+    # 複数のtag_idsが渡ってくるので「配列[]」の形式での記述
+  end
+
+  
 end

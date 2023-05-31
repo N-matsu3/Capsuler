@@ -1,2 +1,88 @@
 <h1>Admin::Items#show</h1>
 <p>Find me in app/views/admin/items/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <%= flash[:notice] %>
+    <div class="col-md-12 mt-5">
+     <!--投稿者のプロフ画像とユーザ名-->
+      <% if @item.user.profile_image.attached? %>
+        <%=image_tag @item.user.profile_image, size: "70x70" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "70x70" %>
+      <% end %>
+     <%= @item.user.user_name%>
+
+    </div>
+
+
+    <div class="col-md-5">
+
+      <!--ガチャのイメージ-->
+
+     <% if @item.image.attached? %>
+            <%=image_tag @item.image, size: "300x300" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "300x300" %>
+          <% end %>
+
+    </div>
+
+      <!--ガチャの説明文-->
+
+    <div class="col-md-6 offset-1">
+      <h3 class="p-2 mb-2 bg-info text-white"><%= @item.title %></h3>
+
+        <div class="col-md-12 mt-3 text-right">
+           <small>投稿日時</small>　<%= @item.created_at.strftime('%Y/%m/%d/%T') %>
+        </div>
+
+        <div class="col-md-12 my-3">
+          <!--複数あるタグをeach文を使って一つ一つ呼び出す記述-->
+          <% @item.tags.each do |tag| %>
+            <div>＃<%= tag.name %></div>
+          <% end %>
+         </div>
+
+        <div class="col-md-12 my-5">
+          <%= safe_join(@item.detail.split("\n"),tag(:br)) %>
+        </div>
+
+
+        <div class="row">
+        <div id="star_<%= @item.id %>"></div>
+          <script>
+          $(document).on('turbolinks:load', function() {
+            let elem = document.querySelector('#star_<%= @item.id %>');
+            if (elem == null) return;
+
+            elem.innerHTML = "";
+            let opt = {
+                       starOn: "<%= asset_path('g.star.png') %>",
+                      starOff: "<%= asset_path('g.star.off.png') %>",
+                      starHalf: "<%= asset_path('g.star.half.png') %>",
+              score: "<%= @item.star %>",
+              readOnly: true,
+            };
+            raty(elem, opt);
+          });
+          </script>
+        </div>
+
+        <div class="col-md-12 text-right">
+         <%= link_to '投稿内容編集', edit_admin_item_path(@item), class: 'btn btn-success btn-small ' %>
+
+        </div>
+
+
+      <h4>コメント一覧</h4>
+      <div>
+        <% @comments.each do |comment| %>
+          <div><%= comment.comment_content %>  by.<%= comment.user.user_name %>  (<%= comment.created_at.strftime('%Y/%m/%d/%T') %>)</div>
+        <% end %>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>

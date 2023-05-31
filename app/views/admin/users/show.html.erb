@@ -1,2 +1,40 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class="container">
+  <div class="row mt-5">
+    <h4 class="col-md-12">マイページ</h4>
+    <div class="col-md-3">
+
+      <%= flash[:notice] %>
+
+
+
+          <% if @user.profile_image.attached? %>
+            <%=image_tag user.profile_image, size: "200x200" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "200x200" %>
+          <% end %>
+    </div>
+
+    <div class="col-md-8 offset-md-1">
+          <table class="table border">
+            <tr>
+              <th>ユーザネーム</th>
+              <td><%= @user.user_name %></td>
+            </tr>
+            <tr>
+              <th>メールアドレス</th>
+              <td><%= @user.email %></td>
+            </tr>
+            <tr>
+              <th>プロフィール</th>
+                  <!--プロフィールがない場合、エラーが起こるのでif文を使って回避-->
+              <td><% if @user.introduction? %>
+                  <%= safe_join(@user.introduction.split("\n"),tag(:br)) %></td>
+                  <% else %>
+                  <% end %>
+            </tr>
+          </table>
+         <%= link_to 'プロフィール編集',  edit_admin_user_path(@user), class: 'btn btn-success w-50' %>
+    </div>
+
+  </div>
+</div>
