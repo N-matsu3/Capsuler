@@ -78,7 +78,9 @@
       <div>
         <% @comments.each do |comment| %>
           <div><%= comment.comment_content %>  by.<%= comment.user.user_name %>  (<%= comment.created_at.strftime('%Y/%m/%d/%T') %>)</div>
+          <%= link_to "削除", admin_comment_path(comment.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
         <% end %>
+
       </div>
 
     </div>

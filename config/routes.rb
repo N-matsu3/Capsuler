@@ -57,6 +57,9 @@ scope module:
     resources :items,only:[:index, :show, :destroy, :delete, :edit, :update]
   # users
     resources :users,only:[:index, :show, :edit, :update]
+
+    # comments
+    resources :comments,only:[:destroy, :delete]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
