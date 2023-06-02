@@ -45,6 +45,9 @@ scope module:
       resources :items do
         resources :comments, only: [:create]
         # commentsリソースをpostsリソース内にネストすることで、post_comments_pathなどのようにパスを指定できる！
+   
+    #favorites 
+      resource :favorites, only: [:create, :destroy]
     end
   end
 
