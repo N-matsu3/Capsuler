@@ -1,2 +1,11 @@
 @use '~bootstrap/scss/bootstrap';
 @use '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.rating{
+  display: flex;
+  black-start: auto;
+
+  img{
+    width:60px;
+  }
+}

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 mr-1">
       <h3>アイテム投稿</h3>
       <%= form_with model: @item do |f| %>
         <table class="table border-borderless">
@@ -32,13 +32,13 @@
           </tr>
           <tr>
             <th>評価</th>
-            <td>
+            <td class="rating">
 
 
               <!--starについての記述-->
               <% if @item.id.nil? %>
-                <div class="form-group row" id="star">
-                  <%= f.label :star  ,class:'col-md-3 col-form-label'%>
+                <div class="form-group" id="star">
+                  <%= f.label :star  ,class:'form-label'%>
                   <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
                   <div id="post_raty"></div>
                 </div>
@@ -51,7 +51,7 @@
                     elem.innerHTML = ""
                     let opt = {
 
-                      size: 5,
+                      size: 36,
                       starOn: "<%= asset_path('g.star.png') %>",
                       starOff: "<%= asset_path('g.star.off.png') %>",
                       starHalf: "<%= asset_path('g.star.half.png') %>",
