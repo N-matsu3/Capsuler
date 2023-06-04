@@ -12,4 +12,10 @@ class Public::FavoritesController < ApplicationController
     favorite.destroy
     redirect_to item_path(item)
   end
+
+  # いいねした一覧
+  def index
+    @favorites = Favorite.all
+  end
+  
 end

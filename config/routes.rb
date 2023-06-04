@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     get 'homes/top'
   end
   namespace :public do
-
+    get "my_favorites" => "favorites#index"
   end
   devise_for :admin, skip: [:registrations,:passwords], controllers: {
 
@@ -33,6 +33,7 @@ scope module:
       get "about" => "homes#about"
 
     #users
+    
       get "users/my_page" => "users#show"
       get "users/my_page/edit" => "users#edit"
       patch "users/my_page" => "users#update"
@@ -48,6 +49,7 @@ scope module:
    
     #favorites 
       resource :favorites, only: [:create, :destroy]
+      
     end
   end
 
