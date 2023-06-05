@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     get 'homes/top'
   end
   namespace :public do
-    get "my_favorites" => "favorites#index"
+
   end
   devise_for :admin, skip: [:registrations,:passwords], controllers: {
 
@@ -33,10 +33,16 @@ scope module:
       get "about" => "homes#about"
 
     #users
-    
       get "users/my_page" => "users#show"
       get "users/my_page/edit" => "users#edit"
       patch "users/my_page" => "users#update"
+
+    resources :users do
+      member do
+        get :favorites
+      end
+
+    end
 
     #items
       resources :items, only:[:index, :new, :create, :show, :edit, :update, :destory, :myindex, :delete]
@@ -46,10 +52,10 @@ scope module:
       resources :items do
         resources :comments, only: [:create]
         # commentsリソースをpostsリソース内にネストすることで、post_comments_pathなどのようにパスを指定できる！
-   
-    #favorites 
+
+    #favorites
       resource :favorites, only: [:create, :destroy]
-      
+
     end
   end
 

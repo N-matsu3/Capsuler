@@ -99,10 +99,13 @@
       </div>
 
       <h4>コメント一覧</h4>
-      <div class="my-3">
+        <div class="col-md-12">
         <% @comments.each do |comment| %>
-          <div class="my-5"><%= comment.comment_content %></br>
-            by.<%= comment.user.user_name %>  (<%= comment.created_at.strftime('%Y/%m/%d/%T') %>)</div>
+        <div class="card mb-3" style="width: 18rem;">
+          <p class="card-text"><%= comment.comment_content %></br>
+          <small>by.<%= comment.user.user_name %>  (<%= comment.created_at.strftime('%Y/%m/%d/%T') %>)</small></p>
+        </div>
+
         <% end %>
       </div>
 

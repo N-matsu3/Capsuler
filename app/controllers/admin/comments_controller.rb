@@ -1,7 +1,6 @@
 class Admin::CommentsController < ApplicationController
 
   def destroy
-    @item = Item.find(params[:id])
     comment = Comment.find(params[:id])
     comment.destroy
       if comment.destroy
@@ -9,6 +8,8 @@ class Admin::CommentsController < ApplicationController
       else
         flash[:danger] = '削除に失敗しました。'
       end
+      
+    @item = Item.find(params[:id])
     redirect_to admin_item_path(@item.id)
   end
 

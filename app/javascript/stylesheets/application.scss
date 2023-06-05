@@ -3,9 +3,16 @@
 
 .rating{
   display: flex;
-  black-start: auto;
 
   img{
     width:60px;
+  }
+}
+
+.index-rating{
+  display: flex;
+
+  img{
+    width:40px;
   }
 }
