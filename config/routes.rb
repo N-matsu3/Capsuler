@@ -36,6 +36,8 @@ scope module:
       get "users/my_page" => "users#show"
       get "users/my_page/edit" => "users#edit"
       patch "users/my_page" => "users#update"
+      get "users/introduction" => "users#introduction"
+      get "users/index" => "users#index"
 
     resources :users do
       member do

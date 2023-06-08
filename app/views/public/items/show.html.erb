@@ -8,7 +8,9 @@
       <% else %>
         <%= image_tag 'no_image', size: "70x70" %>
       <% end %>
-     <%= @item.user.user_name%>
+    <%= link_to users_introduction_path(@user) do %>
+     　<%= @item.user.user_name%>
+    <% end %>
 
     </div>
 

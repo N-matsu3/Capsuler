@@ -16,15 +16,15 @@ class Public::ItemsController < ApplicationController
     end
 
     # AND検索の記述
-    if params[:tag_ids]
-      @items = []
-      params[:tag_ids].each do |key, value|
-        if value == "1"
-          tag_items = Tag.find_by(name: key).items
-          @items = @items.empty? ? tag_items : @items & tag_items
-        end
-      end
-    end
+    # if params[:tag_ids]
+    #   @items = []
+    #   params[:tag_ids].each do |key, value|
+    #     if value == "1"
+    #       tag_items = Tag.find_by(name: key).items
+    #       @items = @items.empty? ? tag_items : @items & tag_items
+    #     end
+    #   end
+    # end
 
   end
 
@@ -45,15 +45,15 @@ class Public::ItemsController < ApplicationController
     end
 
     # AND検索の記述
-    if params[:tag_ids]
-      @items = []
-      params[:tag_ids].each do |key, value|
-        if value == "1"
-          tag_items = Tag.find_by(name: key).items
-          @items = @items.empty? ? tag_items : @items & tag_items
-        end
-      end
-    end
+    # if params[:tag_ids]
+    #   @items = []
+    #   params[:tag_ids].each do |key, value|
+    #     if value == "1"
+    #       tag_items = Tag.find_by(name: key).items
+    #       @items = @items.empty? ? tag_items : @items & tag_items
+    #     end
+    #   end
+    # end
 
   end
 
@@ -75,6 +75,7 @@ class Public::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @user = @item.user
 
     #コメント
     @comments = @item.comments

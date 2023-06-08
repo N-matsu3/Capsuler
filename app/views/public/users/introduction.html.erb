@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row mt-5">
+    <h4 class="col-md-12"><%= @user.user_name %>さんのぺージ</h4>
+    <div class="col-md-3">
+
+
+          <% if @user.profile_image.attached? %>
+            <%=image_tag user.profile_image, size: "200x200" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "200x200" %>
+          <% end %>
+    </div>
+
+    <div class="col-md-8 offset-md-1">
+          <table class="table border">
+            <tr>
+              <th>ユーザネーム</th>
+              <td><%= @user.user_name %></td>
+            </tr>
+            <tr>
+              <th>メールアドレス</th>
+              <td><%= @user.email %></td>
+            </tr>
+            <tr>
+              <th>プロフィール</th>
+                  <!--プロフィールがない場合、エラーが起こるのでif文を使って回避-->
+              <td><% if @user.introduction? %>
+                  <%= safe_join(@user.introduction.split("\n"),tag(:br)) %></td>
+                  <% else %>
+                  <% end %>
+            </tr>
+          </table>
+         <!--<%= link_to 'プロフィール編集',  users_my_page_edit_path, class: 'btn btn-success w-50' %>-->
+         <%= link_to 'いいね一覧',  favorites_user_path(@user), class: 'btn btn-primary w-50' %>
+    </div>
+
+  </div>
+</div>

@@ -60,3 +60,5 @@ gem 'devise'
 # GoogleMap
 gem 'gmaps4rails'
 gem 'geocoder'
+
+gem 'dotenv'

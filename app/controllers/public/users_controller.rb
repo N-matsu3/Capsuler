@@ -23,6 +23,14 @@ class Public::UsersController < ApplicationController
     @favorite_items =Item.find(favorites)
   end
 
+  def introduction
+    @user = User.find(params[:id])
+  end
+
+  def index
+    @users = User.all
+  end
+
    private
   def user_params
     params.require(:user).permit(:user_name, :email, :introduction, :image)

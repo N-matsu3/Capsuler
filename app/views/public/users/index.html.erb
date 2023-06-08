@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <h4 class="col-md-12">ユーザ一覧画面</h4>
+    <div class="col-md-6 offset-3">
+
+      <table class="table border">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>プロフ画像</th>
+            <th>ユーザ名</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><% if user.profile_image.attached? %>
+                  <%=image_tag user.profile_image, size: "70x70" ,class:'mx-auto' %>
+                <% else %>
+                  <%= image_tag 'no_image', size: "70x70" ,class:'mx-auto' %>
+                <% end %>
+            </td>
+            <td><%= link_to admin_user_path(user) do %>
+                  <%= user.user_name %>
+                <% end %>
+            </td>
+          </tr>
+           <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
