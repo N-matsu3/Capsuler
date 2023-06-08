@@ -76,6 +76,9 @@ ActiveRecord::Schema.define(version: 2023_06_02_142405) do
     t.integer "comment_id"
     t.string "title"
     t.text "detail"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.float "star"

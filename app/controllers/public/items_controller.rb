@@ -95,12 +95,12 @@ class Public::ItemsController < ApplicationController
         render :edit
       end
   end
-  
+
 
   private
 
   def item_params
-    params.require(:item).permit(:image, :title, :detail, :star, tag_ids: [])
+    params.require(:item).permit(:image, :title, :detail, :star, :address, :latitude, :longitude, tag_ids: [])
     # 複数のtag_idsが渡ってくるので「配列[]」の形式での記述
   end
 

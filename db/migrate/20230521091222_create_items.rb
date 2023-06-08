@@ -9,6 +9,9 @@ class CreateItems < ActiveRecord::Migration[6.1]
       t.string :title
       t.text :detail
       #位置情報はどう持たせる？？
+      t.string :address
+      t.float :latitude
+      t.float :longitude
 
       t.timestamps
     end
