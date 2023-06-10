@@ -25,6 +25,7 @@ class Public::UsersController < ApplicationController
 
   def introduction
     @user = User.find(params[:id])
+    
   end
 
   def index
