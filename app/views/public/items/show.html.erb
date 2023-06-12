@@ -15,7 +15,7 @@
     </div>
 
 
-    <div class="col-md-5">
+    <div class="col-md-5 mb-5">
 
       <!--ガチャのイメージ-->
       <% if @item.image.attached? %>
@@ -48,7 +48,7 @@
 
       <!--ガチャの説明文-->
 
-    <div class="col-md-6 offset-1">
+    <div class="gacha-sidebar col-md-6 offset-1">
       <h3 class="p-2 mb-2 bg-info text-white"><%= @item.title %></h3>
 
         <div class="col-md-12 mt-3 text-right">
@@ -103,7 +103,9 @@
         </div>
 
         <div class="col-md-12 text-right">
-         <%= link_to '投稿内容編集', edit_item_path(@item), class: 'btn btn-success btn-small ' %>
+        <% if @item.user == current_user %>
+          <%= link_to '投稿内容編集', edit_item_path(@item), class: 'btn btn-success btn-small ' %>
+        <% end %>
         </div>
 
 
