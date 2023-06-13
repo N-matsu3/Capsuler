@@ -33,7 +33,7 @@ class Public::ItemsController < ApplicationController
   def myindex
     @user = current_user
     #current_userが作ったitemのみ表示。.orderあとは作成日時順で並び替えのための記述
-    @items = @user.items.order(created_at: :desc)
+    @items = @user.items.order(created_at: :desc).page(parms[:page])
 
 
     #OR検索の記述

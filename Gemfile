@@ -62,3 +62,5 @@ gem 'gmaps4rails'
 gem 'geocoder'
 
 gem 'dotenv-rails'
+
+gem 'kaminari','~> 1.2.1'
