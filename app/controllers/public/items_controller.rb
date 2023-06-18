@@ -4,28 +4,16 @@ class Public::ItemsController < ApplicationController
   def index
     # @items = Item.all
     #ランダムに表示する記述
-    @random = Item.order("RANDOM()").limit(5)
+    # @random = Item.order("RANDOM()").limit(5)
+     @random = Item.order("RANDOM()").page(params[:page]).per(5)
 
       # タグ検索機能
       #OR検索の記述
     if params[:tag_ids]
-      @items = []
-      params[:tag_ids].each do |key, value|
-        @items += Tag.find_by(name: key).items if value == "1"
-      end
-      @items.uniq!
+      selected_tag_names = params[:tag_ids].select {|k,v| v == "1"}.keys
+      selected_tag_ids = Tag.where(name: selected_tag_names).pluck(:id)
+      @random = Item.joins(:tag_relations).where(tag_relations: { tag_id: selected_tag_ids}).page(params[:page]).per(5)
     end
-
-    # AND検索の記述
-    # if params[:tag_ids]
-    #   @items = []
-    #   params[:tag_ids].each do |key, value|
-    #     if value == "1"
-    #       tag_items = Tag.find_by(name: key).items
-    #       @items = @items.empty? ? tag_items : @items & tag_items
-    #     end
-    #   end
-    # end
 
   end
 
@@ -33,28 +21,14 @@ class Public::ItemsController < ApplicationController
   def myindex
     @user = current_user
     #current_userが作ったitemのみ表示。.orderあとは作成日時順で並び替えのための記述
-    @items = @user.items.order(created_at: :desc).page(parms[:page])
+    @items = @user.items.order(created_at: :desc).page(params[:page]).per(5)
 
 
-    #OR検索の記述
     if params[:tag_ids]
-      @items = []
-      params[:tag_ids].each do |key, value|
-        @items += Tag.find_by(name: key).items if value == "1"
-      end
-      @items.uniq!
+      selected_tag_names = params[:tag_ids].select {|k,v| v == "1"}.keys
+      selected_tag_ids = Tag.where(name: selected_tag_names).pluck(:id)
+      @items = Item.joins(:tag_relations).where(user: @user, tag_relations: { tag_id: selected_tag_ids}).page(params[:page]).per(5)
     end
-
-    # AND検索の記述
-    # if params[:tag_ids]
-    #   @items = []
-    #   params[:tag_ids].each do |key, value|
-    #     if value == "1"
-    #       tag_items = Tag.find_by(name: key).items
-    #       @items = @items.empty? ? tag_items : @items & tag_items
-    #     end
-    #   end
-    # end
 
   end
 

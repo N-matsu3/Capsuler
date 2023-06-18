@@ -31,7 +31,7 @@ class Admin::ItemsController < ApplicationController
     @comments = @item.comments
 
   end
-  
+
   def edit
     @item = Item.find(params[:id])
   end
@@ -46,6 +46,11 @@ class Admin::ItemsController < ApplicationController
       end
   end
 
+def destroy
+  item = Item.find(params[:id])
+  item.destroy
+  redirect_to admin_items_path
+end
 
   private
 
@@ -54,5 +59,5 @@ class Admin::ItemsController < ApplicationController
     # 複数のtag_idsが渡ってくるので「配列[]」の形式での記述
   end
 
-  
+
 end

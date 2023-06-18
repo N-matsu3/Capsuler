@@ -19,14 +19,14 @@
 
       <!--ガチャのイメージ-->
       <% if @item.image.attached? %>
-        <%=image_tag @item.image, size: "300x300" %>
+        <%=image_tag @item.image, size: "350x350" %>
       <% else %>
-        <%= image_tag 'no_image', size: "300x300" %>
+        <%= image_tag 'no_image', size: "350x350" %>
       <% end %>
 
       <!--GoogleMap-->
 
-      <div class="map">
+      <div class="map mt-5">
         <div id="map">
         </div>
       </div>
