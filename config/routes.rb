@@ -33,7 +33,7 @@ scope module:
       get "about" => "homes#about"
 
     #users
-      get "users/introduction/:id" => "users#introduction"
+      get "users/introduction/:id" => "users#introduction" ,as:"users_introduction" #asでパスを作ってあげないとrailsがうまくpathを作ってくれない
       get "users/my_page" => "users#show"
       get "users/my_page/edit" => "users#edit"
       patch "users/my_page" => "users#update"
