@@ -34,6 +34,7 @@ scope module:
 
     #users
       get "users/introduction/:id" => "users#introduction" ,as:"users_introduction" #asでパスを作ってあげないとrailsがうまくpathを作ってくれない
+
       get "users/my_page" => "users#show"
       get "users/my_page/edit" => "users#edit"
       patch "users/my_page" => "users#update"
@@ -52,6 +53,7 @@ scope module:
     #items
       resources :items, only:[:index, :new, :create, :show, :edit, :update, :destory, :myindex, :delete]
       get "my_items" => "items#myindex"
+      get "index_useritems/:id"  => "items#useritems" ,as:"index_useritems"
 
     #comment
       resources :items do

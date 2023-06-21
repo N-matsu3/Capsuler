@@ -48,6 +48,18 @@ class Public::ItemsController < ApplicationController
     end
   end
 
+  def useritems
+    @user = User.find(params[:id])
+    @items = @user.items.order(created_at: :desc) .page(params[:page]).per(5)
+
+    if params[:tag_ids]
+      selected_tag_names = params[:tag_ids].select {|k,v| v == "1"}.keys
+      selected_tag_ids = Tag.where(name: selected_tag_names).pluck(:id)
+      @items = Item.joins(:tag_relations).where(user: @user, tag_relations: { tag_id: selected_tag_ids}).page(params[:page]).per(5)
+    end
+
+  end
+
   def show
     @item = Item.find(params[:id])
     @user = @item.user
@@ -70,6 +82,12 @@ class Public::ItemsController < ApplicationController
       else
         render :edit
       end
+  end
+
+  def destroy
+  item = Item.find(params[:id])
+  item.destroy
+  redirect_to my_items_path
   end
 
 
