@@ -1,6 +1,12 @@
 class Item < ApplicationRecord
 
   has_one_attached :image
+
+  validates :title, presence: true
+  validates :detail, presence: true
+   validates :address, presence: true
+  # validates :image, presence: true
+
   belongs_to :user
 
   #itemsテーブルから中間テーブルに対する関連付け

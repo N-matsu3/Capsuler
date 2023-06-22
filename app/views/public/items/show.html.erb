@@ -105,7 +105,7 @@
         <div class="col-md-12 text-right">
         <% if @item.user == current_user %>
           <%= link_to '投稿内容編集', edit_item_path(@item), class: 'btn btn-success btn-small ' %>
-          <%= link_to "削除", item_path(@item.id), class:'btn btn-danger w-50 mx-auto' ,method: :delete, "data-confirm" => "本当にこのアイテムを削除しますか？" %>
+          <%= link_to "削除", item_path(@item.id), class:'btn btn-danger btn-small mx-auto' ,method: :delete, "data-confirm" => "本当にこのアイテムを削除しますか？" %>
         <% end %>
         </div>
 

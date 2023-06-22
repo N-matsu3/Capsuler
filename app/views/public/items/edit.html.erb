@@ -1,6 +1,17 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
+
+      <div class="error-message col-md-6 mx-auto">
+        <% if @item.errors.any? %>
+          <%= @item.errors.count %>件のエラーが発生しました!!
+        <ul>
+          <% @item.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+         </ul>
+        <% end %>
+
       <%= form_with model: @item, url: item_path(@item), method: :patch do |f| %>
         <table class="table border-borderless">
           <tr>

@@ -30,8 +30,13 @@
                   <% end %>
             </tr>
           </table>
-         <%= link_to '投稿一覧',  index_useritems_path(@user), class: 'btn btn-success w-50' %>
-         <%= link_to 'いいね一覧',  favorites_user_path(@user), class: 'btn btn-primary w-50' %>
+
+          <%= link_to favorites_user_path(@user), class: 'btn btn-danger w-50' do %>
+            いいね一覧
+          <% end %>
+
+         <%#= link_to 'いいね一覧',  favorites_user_path(@user), class: 'btn btn-danger w-50' %>
+         <%= link_to '投稿一覧',  index_useritems_path(@user), class: 'btn btn-primary w-50' %>
     </div>
 
   </div>

@@ -44,7 +44,7 @@ class Public::ItemsController < ApplicationController
         flash[:notice] = "投稿しました！"
         redirect_to item_path(@item)
     else
-      render :myindex
+      render :new
     end
   end
 

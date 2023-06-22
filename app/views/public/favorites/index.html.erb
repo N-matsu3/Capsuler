@@ -2,9 +2,15 @@
   <div class="row">
     <div class="col">
       <h4>いいねした一覧</h4>
+            <%# if @favorites.item.title? %>
       <% @favorites.each do |favorite| %>
+
       <%= favorite.item.title %>
-      
+      <%# else %>
+
+
+
+
     </div>
   </div>
 </div>
