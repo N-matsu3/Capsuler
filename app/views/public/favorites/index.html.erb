@@ -1,15 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+
       <h4>いいねした一覧</h4>
             <%# if @favorites.item.title? %>
+      <div class="col-md-12 mx-auto d-flex">
       <% @favorites.each do |favorite| %>
 
       <%= favorite.item.title %>
       <%# else %>
-
-
-
 
     </div>
   </div>
