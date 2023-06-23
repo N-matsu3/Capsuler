@@ -22,6 +22,11 @@
           <th>プロフィール</th>
           <td><%= f.text_area :introduction, autofocus: true, placeholder:"自己紹介をいれてね♪"%></td>
         </tr>
+        <tr>
+          <th>ステータス</th>
+          <td><%= f.radio_button :is_deleted, "false" %><%= f.label :false, "有効" %></br>
+              <%= f.radio_button :is_deleted, "tlue" %><%= f.label :tlue, "退会" %></td>
+        </tr>
       </table>
         <%= f.submit '編集を保存' ,class: 'btn btn-success w-50' %>
 

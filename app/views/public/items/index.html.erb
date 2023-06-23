@@ -2,9 +2,9 @@
   <div class="row">
     <h3 class="col-md-12 my-5">みんなのガチャガチャ</h3>
 
-      <div class="col-md-8 mx-auto">
+      <div class="col-md-8 mx-auto d-flex flex-wrap">
       <% @random.each do |item| %>
-        <div class="card mb-3" style="width: 16rem;">
+        <div class="card mr-3 mb-3" style="width: 16rem;">
           <% if item.image.attached? %>
             <%=image_tag item.image, size: "150x150" ,class:'mx-auto' %>
           <% else %>
@@ -26,6 +26,7 @@
       </div>
 
       <div class="col-md-3 offset-md-1">
+        <h6>タグ検索</h6>
         <%= form_tag({controller:"items",action:"index"}, method: :get) do %>
           <% Tag.all.each do |t| %>
             <li><%= check_box :tag_ids, t.name %><%= t.name %></li>

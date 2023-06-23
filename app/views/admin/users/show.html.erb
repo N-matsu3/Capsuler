@@ -8,7 +8,7 @@
 
 
           <% if @user.profile_image.attached? %>
-            <%=image_tag user.profile_image, size: "200x200" %>
+            <%=image_tag @user.profile_image, size: "200x200" %>
           <% else %>
             <%= image_tag 'no_image', size: "200x200" %>
           <% end %>
@@ -31,6 +31,10 @@
                   <%= safe_join(@user.introduction.split("\n"),tag(:br)) %></td>
                   <% else %>
                   <% end %>
+            </tr>
+            <tr>
+              <th>ステータス</th>
+              <td><%= @user.is_deleted ? "退会" : "有効"%></td>
             </tr>
           </table>
          <%= link_to 'プロフィール編集',  edit_admin_user_path(@user), class: 'btn btn-success w-50' %>

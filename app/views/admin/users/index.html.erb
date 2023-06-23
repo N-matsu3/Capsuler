@@ -9,6 +9,7 @@
             <th>ID</th>
             <th>プロフ画像</th>
             <th>ユーザ名</th>
+            <th>ステータス</th>
           </tr>
         </thead>
         <tbody>
@@ -25,6 +26,7 @@
                   <%= user.user_name %>
                 <% end %>
             </td>
+            <td><%= user.is_deleted ? "退会" : "有効"%></td>
           </tr>
            <% end %>
         </tbody>

@@ -25,7 +25,7 @@ class Public::UsersController < ApplicationController
 
   def introduction
     @user = User.find(params[:id])
-    
+
   end
 
   def index
@@ -34,7 +34,7 @@ class Public::UsersController < ApplicationController
 
    private
   def user_params
-    params.require(:user).permit(:user_name, :email, :introduction, :image)
+    params.require(:user).permit(:user_name, :email, :introduction, :profile_image)
   end
 
   def set_user

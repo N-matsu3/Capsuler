@@ -5,7 +5,7 @@ class Public::ItemsController < ApplicationController
     # @items = Item.all
     #ランダムに表示する記述
     # @random = Item.order("RANDOM()").limit(5)
-     @random = Item.order("RANDOM()").page(params[:page]).per(5)
+     @random = Item.order("RANDOM()").page(params[:page]).per(6)
 
       # タグ検索機能
       #OR検索の記述
