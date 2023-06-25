@@ -1,5 +1,7 @@
 class Public::ItemsController < ApplicationController
   before_action :authenticate_user!
+  before_action :is_matching_login_user, only: [:edit, :update]
+
 
   def index
     # @items = Item.all
@@ -96,6 +98,14 @@ class Public::ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:image, :title, :detail, :star, :address, :latitude, :longitude, tag_ids: [])
     # 複数のtag_idsが渡ってくるので「配列[]」の形式での記述
+  end
+
+  def is_matching_login_user
+    @item = Item.find(params[:id])
+    @user = @item.user
+    unless @user.id == current_user.id
+      redirect_to my_items_path
+    end
   end
 
 end

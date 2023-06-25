@@ -1,6 +1,5 @@
 class Public::UsersController < ApplicationController
-  # before_action :authenticate_user!
-  # before_action :is_matching_login_user, only: [:edit, :update]
+   before_action :authenticate_user!
    before_action :set_user, only: [:favorites]
 
   def show

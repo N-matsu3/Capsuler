@@ -28,6 +28,9 @@ Rails.application.routes.draw do
 ##ユーザ
 scope module:
   :public do
+    # ゲストログイン
+      post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
+
     #homes
       root to: "homes#top"
       get "about" => "homes#about"

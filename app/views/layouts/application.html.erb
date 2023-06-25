@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    
+
     <title>Capsuler</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -17,7 +17,7 @@
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <a class="navbar-brand p-3" href="/">Capsuler</a>
+          <a class="navbar-brand p-3" href="/"><%= image_tag('logo.jpg') %></a>
           <div>
             <% if user_signed_in? %>
               <% if current_user.profile_image.attached? %>
@@ -26,7 +26,7 @@
                 <%= image_tag 'no_image', size: "50x50" %>
               <% end %>
                 <%= current_user.user_name%>
-                
+
               <% elsif admin_signed_in? %>
                 管理者としてログイン中
               <% end %>
@@ -36,7 +36,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            
+
             <ul class="navbar-nav ml-auto">
 
             <% if user_signed_in? %>
@@ -98,13 +98,13 @@
             <% end %>
 
             </ul>
-            
+
           </div>
         </div>
       </nav>
-      
+
     </header>
-    <main class="mb-auto">
+    <main class=" main-visual mb-auto">
     <%= yield %>
     </main>
     <footer class="bg-dark text-light pt-2 pb-1 mt-5">

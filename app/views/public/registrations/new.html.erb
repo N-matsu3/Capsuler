@@ -37,12 +37,18 @@
               <th></th>
               <td><%= f.submit "新規登録" ,class: "btn btn-success w-50"%></td>
             </tr>
-         
+
+             <tr>
+              <th></th>
+              <td> <%= link_to 'ゲストログイン', homes_guest_sign_in_path, method: :post ,class: "btn btn-primary w-50"%></td>
+            </tr>
+
         </table>
         <% end %>
-        
+
       <div class="p-3 mb-2 bg-secondary-subtle text-dark">既に登録済みの方</div>
          <%= link_to 'こちら', new_user_session_path %>からログインしてください。
+
 
       </div>
     </div>
