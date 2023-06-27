@@ -1,10 +1,13 @@
 @use '~bootstrap/scss/bootstrap';
 @use '~@fortawesome/fontawesome-free/scss/fontawesome';
 
-// .main-visual {
+.main-visual {
 
-//   background-image: image-url('capsulerr.jpg');
-// }
+  width: 100%;
+  // background-size:cover;
+  background-position: right bottom;
+  background-attachment: fixed;
+}
 
 .gacha-sidebar{
   background-color: #e5f2ff;

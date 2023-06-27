@@ -1,6 +1,8 @@
 class Admin::ItemsController < ApplicationController
+   before_action :authenticate_admin!
+
   def index
-    @items = Item.all.order(created_at: :desc)
+    @items = Item.all.order(created_at: :desc).page(params[:page]).per(6)
 
     #タグ検索機能
     #OR検索の記述
@@ -23,6 +25,12 @@ class Admin::ItemsController < ApplicationController
       end
     end
   end
+
+  def user_items
+    @user = User.find(params[:id])
+    @items = @user.items.order(created_at: :desc) .page(params[:page]).per(5)
+  end
+
 
   def show
     @item = Item.find(params[:id])

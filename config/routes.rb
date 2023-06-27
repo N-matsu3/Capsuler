@@ -76,6 +76,7 @@ scope module:
 
   #items
     resources :items,only:[:index, :show, :destroy, :delete, :edit, :update]
+    get "index_user_items/:id"  => "items#user_items" ,as:"index_user_items"
   # users
     resources :users,only:[:index, :show, :edit, :update]
 

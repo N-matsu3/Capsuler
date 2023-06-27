@@ -1,10 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col">
-      <h4>アイテム管理画面</h4>
 
+       <h3 class="col-md-12 my-5">アイテム一覧</h3>
+
+      <div class="col-md-8 mx-auto d-flex flex-wrap">
       <% @items.each do |item| %>
-        <div class="card mb-3" style="width: 16rem;">
+        <div class="card mr-3 mb-3" style="width: 16rem;">
           <% if item.image.attached? %>
             <%=image_tag item.image, size: "150x150" ,class:'mx-auto' %>
           <% else %>
@@ -32,6 +33,9 @@
           <% end %>
           <%= submit_tag '検索' %>
         <% end %>
+    </div>
+    <div class="col-md-6 offset-md-6">
+       <%= paginate @items ,theme: 'twitter-bootstrap-4'%>
     </div>
   </div>
 </div>
