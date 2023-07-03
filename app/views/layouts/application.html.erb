@@ -23,7 +23,7 @@
               <% if current_user.profile_image.attached? %>
                 <%=image_tag current_user.profile_image, size: "50x50" %>
               <% else %>
-                <%= image_tag 'no_image', size: "50x50" %>
+                <%= image_tag asset_path('no_image'), size: "50x50" %>
               <% end %>
                 <%= current_user.user_name%>
 
