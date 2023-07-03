@@ -7,7 +7,7 @@
       <% if @item.user.profile_image.attached? %>
         <%=image_tag @item.user.profile_image, size: "70x70" %>
       <% else %>
-        <%= image_tag 'no_image', size: "70x70" %>
+        <%= image_tag asset_path('no_image.jpg'), size: "70x70" %>
       <% end %>
      <%= @item.user.user_name%>
 

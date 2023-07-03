@@ -6,7 +6,7 @@
       <% if @item.user.profile_image.attached? %>
         <%=image_tag @item.user.profile_image, size: "70x70" %>
       <% else %>
-        <%= image_tag 'no_image', size: "70x70" %>
+        <%= image_tag asset_path('no_image.jpg'), size: "70x70" %>
       <% end %>
     <%= link_to users_introduction_path(@user) do %>
      　<%= @item.user.user_name%>
@@ -21,7 +21,7 @@
       <% if @item.image.attached? %>
         <%=image_tag @item.image, size: "350x350" %>
       <% else %>
-        <%= image_tag 'no_image', size: "350x350" %>
+        <%= image_tag asset_path('no_image.jpg'), size: "350x350" %>
       <% end %>
 
       <!--GoogleMap-->

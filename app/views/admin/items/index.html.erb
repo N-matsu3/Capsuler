@@ -9,7 +9,7 @@
           <% if item.image.attached? %>
             <%=image_tag item.image, size: "150x150" ,class:'mx-auto' %>
           <% else %>
-            <%= image_tag 'no_image', size: "150x150" ,class:'mx-auto' %>
+            <%= image_tag asset_path('no_image.jpg'), size: "150x150" ,class:'mx-auto' %>
           <% end %>
 
           <h5 class="card-title mx-auto">

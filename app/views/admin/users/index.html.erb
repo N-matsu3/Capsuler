@@ -19,7 +19,7 @@
             <td><% if user.profile_image.attached? %>
                   <%=image_tag user.profile_image, size: "70x70" ,class:'mx-auto' %>
                 <% else %>
-                  <%= image_tag 'no_image', size: "70x70" ,class:'mx-auto' %>
+                  <%= image_tag asset_path('no_image.jpg'), size: "70x70" ,class:'mx-auto' %>
                 <% end %>
             </td>
             <td><%= link_to admin_user_path(user) do %>
