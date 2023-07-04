@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mt-5">
-    <h4 class="col-md-12">マイページ</h4>
-    <div class="col-md-3">
+    <h4 class="col-md-12 my-5"><b>マイページ</b></h4>
+    <div class="col-md-3 my-5">
 
       <%= flash[:notice] %>
 
@@ -12,7 +12,7 @@
           <% end %>
     </div>
 
-    <div class="col-md-8 offset-md-1">
+    <div class="col-md-8 offset-md-1 my-5">
           <table class="table border">
             <tr>
               <th>ユーザネーム</th>
@@ -31,8 +31,8 @@
                   <% end %>
             </tr>
           </table>
-           <div class="col-md-6 "><%= link_to 'プロフィール編集',  users_my_page_edit_path, class: 'btn btn-success w-50' %></div>
-         <div class="col-md-6 d-flex offset-6"><%= link_to 'いいね一覧',  favorites_user_path(@user), class: 'btn btn-danger w-50' %>
+           <div class="col-md-6 my-5"><%= link_to 'プロフィール編集',  users_my_page_edit_path, class: 'btn btn-success w-50' %></div>
+         <div class="col-md-6 d-flex offset-6 mb-5"><%= link_to 'いいね一覧',  favorites_user_path(@user), class: 'btn btn-danger w-50' %>
          <%= link_to '自分の投稿一覧',  my_items_path, class: 'btn btn-primary w-50' %></div>
     </div>
 
