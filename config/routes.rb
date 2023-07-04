@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   namespace :public do
 
   end
-  # devise_for :admin, skip: [:registrations,:passwords], controllers:
-  devise_for :admin, skip: [:passwords], controllers: {
+  #[ :registrations,]を付けることによってサインアップはできないようにしている。
+  devise_for :admin, skip: [:registrations,:passwords], controllers: {
 
     sessions: "admin/sessions"
 }
@@ -73,6 +73,7 @@ scope module:
 ##管理者
   namespace :admin do
     root to: "homes#top"
+    # 上記の記述でskipしているので、実際は入力しても出ない。
     get "sign_up" => "registrations#new"
 
   #items
