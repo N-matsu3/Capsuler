@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <%= form_with model: @item, url: item_path(@item), method: :patch do |f| %>
+      <%= form_with model: @item, url: admin_item_path(@item), method: :patch do |f| %>
         <table class="table border-borderless">
           <tr>
             <th>イメージ</th><td><%= f.file_field :image, placeholder: "ガチャ画像", accept: "image/*" %></td>
@@ -28,7 +28,13 @@
           </tr>
           </tr>
            <tr>
-            <th>位置情報</th><td></td>
+            <th>位置情報</th>
+            <td>
+              <div class="form-group">
+                <%= f.label :address, '場所' %>
+                <%= f.text_field :address, class: 'form-control' %>
+              </div>
+            </td>
           </tr>
           <tr>
             <th></th><td><%= f.submit '編集保存',class:'btn btn-success w-50' %></td>
