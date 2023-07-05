@@ -5,7 +5,8 @@ class Item < ApplicationRecord
   validates :title, presence: true
   validates :detail, presence: true
   validates :address, presence: true
-  # validates :image, presence: true
+  validates :image, presence: true
+  validates :star, presence: true
 
   belongs_to :user
 
